@@ -1,5 +1,37 @@
 @import '../../App.scss';
 
-body {
-    background: $blue;
+.MainContent {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    overflow: hidden;
+    cursor: grab;
+    background: linear-gradient(
+        -360deg,
+        rgba($blue, 0.4) 0%,
+        rgba($yellow, 0.48) 16%,
+        rgba($yellow, 0.64) 48%,
+        rgba($blue, 1) 100%
+    );
+    animation: gradient-animation 24s linear infinite;
+    @keyframes gradient-animation {
+        @for $i from 360 to -1 {
+            $ndeg: '-' + $i + 'deg';
+            #{((360 - $i) / 360) * 100%} {
+                background-image: linear-gradient(
+                    -#{$i}deg,
+                    rgba($blue, 0.4) 0%,
+                    rgba($yellow, 0.48) 16%,
+                    rgba($yellow, 0.64) 48%,
+                    rgba($blue, 1) 100%
+                );
+            }
+        }
+    }
+    &.skinny {
+        overflow: hidden;
+    }
 }

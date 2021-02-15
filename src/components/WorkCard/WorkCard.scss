@@ -1,0 +1,35 @@
+.WorkCard {
+    height: 50vh;
+    width: 50vw;
+    position: relative;
+    flex-shrink: 0;
+    transition: all 0.25s;
+    .expand-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.25s;
+        height: 50vh;
+        width: 50vw;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        img {
+            max-width: 64%;
+            max-height: 64%;
+            pointer-events: none;
+        }
+    }
+    &.active {
+        .expand-container {
+            width: 100vw;
+            height: 100vh;
+        }
+        &:hover {
+            opacity: 1;
+        }
+    }
+    &:hover {
+        opacity: 0.4;
+    }
+}
