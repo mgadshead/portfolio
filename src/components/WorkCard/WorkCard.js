@@ -1,10 +1,11 @@
 import React from 'react';
 import './WorkCard.scss';
+import { Link } from 'react-router-dom';
 
 const WorkCard = props => {
     const onClick = e => {
         props.getCardPosition(e);
-        props.openCaseStudy(props.i, e);
+        props.openCaseStudy(props.i);
     };
 
     return (
@@ -12,7 +13,8 @@ const WorkCard = props => {
             className={`WorkCard${props.i === props.index && props.isActive ? ' active' : ''}`}
             onClick={e => onClick(e)}
         >
-            <div
+            <Link
+                to={props.link}
                 className='expand-container'
                 id={'card-' + props.i}
                 style={{
@@ -23,7 +25,7 @@ const WorkCard = props => {
                 }}
             >
                 <img src={'/portfolio/img/' + props.logo} />
-            </div>
+            </Link>
         </div>
     );
 };
