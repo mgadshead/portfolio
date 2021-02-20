@@ -28,6 +28,7 @@ const MainContent = props => {
                 getCardPosition={props.getCardPosition}
                 openCaseStudy={props.openCaseStudy}
                 isActive={props.isActive}
+                transition={props.transition}
             />
         </div>
     );

@@ -21,7 +21,8 @@ const WorkCard = props => {
                     background: props.backgroundColor,
                     top: props.i === props.index ? props.cardPosition.y + 'px' : 'auto',
                     left: props.i === props.index ? props.cardPosition.x + 'px' : 'auto',
-                    position: props.i === props.index ? 'fixed' : 'absolute'
+                    position: props.i === props.index ? 'fixed' : 'absolute',
+                    transition: props.transition ? 'all 0.24s' : 'none'
                 }}
             >
                 <img src={'/portfolio/img/' + props.logo} />

@@ -3,14 +3,13 @@
 $blue: #0ddbfd;
 $yellow: #fffd82;
 
-// ::-webkit-scrollbar {
-//     width: 8px;
-//     background: $blue;
-// }
-
-// ::-webkit-scrollbar-thumb {
-//     background: $yellow;
-// }
+@mixin hover-supported {
+    @media not all and (pointer: coarse) {
+        &:hover {
+            @content;
+        }
+    }
+}
 
 .App {
     font-family: 'Raleway', sans-serif;

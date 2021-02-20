@@ -4,6 +4,7 @@ import WorkCard from '../WorkCard/WorkCard';
 
 const HorizontalScroller = props => {
     const caseStudies = [
+        { backgroundColor: '#fff', logo: 'about-me.svg', link: '/portfolio/about-me' },
         { backgroundColor: '#F9FAF1', logo: 'archetto.svg', link: '/portfolio/archetto-towns' },
         { backgroundColor: '#fff', logo: 'annie-burgess.svg', link: '/portfolio/annie-burgess' },
         { backgroundColor: '#1C2E3B', logo: 'marlin-spring.svg', link: '/portfolio/marlin-spring' },
@@ -26,6 +27,7 @@ const HorizontalScroller = props => {
                 link={caseStudy.link}
                 getCardPosition={props.getCardPosition}
                 openCaseStudy={props.openCaseStudy}
+                transition={props.transition}
             />
         );
     });
