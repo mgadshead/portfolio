@@ -9,13 +9,14 @@ const CaseStudy = props => {
     const history = useHistory();
     const homeButton = useRef(null);
     const scrollDown = useRef(null);
-    let body = document.querySelector('html');
 
     useEffect(() => {
         props.startOpen(props.id);
     }, []);
 
     useEffect(() => {
+        let body = document.querySelector('html');
+
         const scrollFunction = () => {
             if (body.scrollTop === 0 && isTop === false) {
                 setIsTop(true);
@@ -26,22 +27,24 @@ const CaseStudy = props => {
                 setTimeout(() => {
                     props.setIndex(null);
                     history.push('/portfolio');
+                    props.setZIndex(false);
                 }, 240);
-            }
-            if (body.scrollTop > 0) {
-                scrollDown.current.classList.remove('show-scroll-down');
             }
             if (body.scrollTop === 0 && isTop === true) {
                 scrollDown.current.classList.add('show-scroll-down');
+            }
+            if (body.scrollTop > 0) {
+                let cardParallaxPosition = body.scrollTop * -0.32;
+                props.setCardParallax(cardParallaxPosition);
+                scrollDown.current.classList.remove('show-scroll-down');
+            } else {
+                props.setCardParallax(0);
             }
         };
 
         setTimeout(() => {
             if (homeButton.current !== null) {
                 homeButton.current.classList.add('show-home-button');
-            }
-            if (scrollDown.current !== null) {
-                scrollDown.current.classList.add('show-scroll-down');
             }
         }, 240);
 
@@ -51,6 +54,14 @@ const CaseStudy = props => {
             document.removeEventListener('scroll', scrollFunction);
         };
     });
+
+    useEffect(() => {
+        setTimeout(() => {
+            if (scrollDown.current !== null) {
+                scrollDown.current.classList.add('show-scroll-down');
+            }
+        }, 240);
+    }, []);
 
     const onClickFunctions = () => {
         props.closeCaseStudy(props.i);
@@ -70,12 +81,7 @@ const CaseStudy = props => {
             >
                 <HomeIcon />
             </div>
-            <div
-                className='scroll-down'
-                role='button'
-                ref={scrollDown}
-                style={{ color: props.scrollDownColor }}
-            >
+            <div className='scroll-down' style={{ color: props.scrollDownColor }} ref={scrollDown}>
                 Scroll Down
                 <ChevronIcon />
             </div>

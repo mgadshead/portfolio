@@ -29,6 +29,8 @@ const MainContent = props => {
                 openCaseStudy={props.openCaseStudy}
                 isActive={props.isActive}
                 transition={props.transition}
+                zIndex={props.zIndex}
+                cardParallax={props.cardParallax}
             />
         </div>
     );

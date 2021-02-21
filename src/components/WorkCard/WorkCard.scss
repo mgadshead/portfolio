@@ -26,7 +26,6 @@
         .expand-container {
             width: 100vw;
             height: 100vh;
-            z-index: 1;
             @include hover-supported() {
                 &:hover {
                     opacity: 1;

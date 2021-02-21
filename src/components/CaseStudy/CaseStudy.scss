@@ -101,7 +101,7 @@
         justify-content: center;
         align-items: center;
         border: 2px solid $blue;
-        transition: all 0.24s, opacity 0.96s;
+        transition: all 0.24s;
         position: fixed;
         top: 24px;
         right: 24px;
@@ -152,12 +152,9 @@
             left: 50%;
             transform: translateX(-50%);
             bottom: calc(50% - 40px);
-            // background: red;
-            z-index: 9999999;
         }
         &.show-scroll-down {
             opacity: 1;
-            transition: opacity 0.96s;
         }
         @media all and (max-width: 728px) {
             font-size: 16px;

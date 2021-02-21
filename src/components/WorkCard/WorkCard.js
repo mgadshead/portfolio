@@ -22,10 +22,19 @@ const WorkCard = props => {
                     top: props.i === props.index ? props.cardPosition.y + 'px' : 'auto',
                     left: props.i === props.index ? props.cardPosition.x + 'px' : 'auto',
                     position: props.i === props.index ? 'fixed' : 'absolute',
-                    transition: props.transition ? 'all 0.24s' : 'none'
+                    transition: props.transition ? 'all 0.24s' : 'none',
+                    zIndex: props.i === props.index && props.zIndex ? '1' : 'auto'
                 }}
             >
-                <img src={'/portfolio/img/' + props.logo} />
+                <img
+                    src={'/portfolio/img/' + props.logo}
+                    style={{
+                        transform:
+                            props.i === props.index
+                                ? 'translateY(' + props.cardParallax + 'px)'
+                                : '0'
+                    }}
+                />
             </Link>
         </div>
     );

@@ -28,6 +28,8 @@ const HorizontalScroller = props => {
                 getCardPosition={props.getCardPosition}
                 openCaseStudy={props.openCaseStudy}
                 transition={props.transition}
+                zIndex={props.zIndex}
+                cardParallax={props.cardParallax}
             />
         );
     });

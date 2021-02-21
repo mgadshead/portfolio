@@ -11,7 +11,7 @@ const Router = () => {
             scrollDownColor: '#333',
             copy: {
                 __html:
-                    "<h2>Hi! I’m a web developer and designer.</h2><p>I like to make things on the internet that are pretty and easy to use. I strongly dislike things that are pretty at the expense of being easy to use. But sometimes that's what people want, and I'm also a pathological people pleaser.</p><p>I like to use cool new technology, but I'm agnostic about which ones for the most part. I hold a seemingly controversial belief that a stable, well written plugin that saves time and makes projects more maintainable is a good thing.</p><h2>Get in touch:</h2><p>If you'd like to get in touch to build something cool or just to argue about which text editor is best, please get in touch at <a href='mailto:matthew.adshead@gmail.com'>matthew.adshead@gmail.com</a> or via <a href='https://www.linkedin.com/in/matthew-adshead-072a3596/' target='_blank'>LinkedIn</a>.</p>"
+                    "<h2>Hi! I’m a web developer and designer.</h2><p>I like to make things on the internet that are pretty and easy to use. I strongly dislike things that are pretty at the expense of being easy to use. But sometimes that's what people want, and I'm also a pathological people pleaser.</p><p>I like to use cool new technology, but I'm agnostic about which ones for the most part. I hold a seemingly controversial belief that a stable, well written plugin that saves time and makes projects more maintainable is a good thing.</p><h2>Get in touch:</h2><p>If you'd like to get in touch to build something cool or just to argue about which text editor is best, please get in touch via <a href='mailto:matthew.adshead@gmail.com'>email</a> or via <a href='https://www.linkedin.com/in/matthew-adshead-072a3596/' target='_blank'>LinkedIn</a>.</p>"
             },
             image: '/portfolio/img/matthew-adshead.jpg'
         },
@@ -99,6 +99,8 @@ const Router = () => {
     const [cardPosition, setCardPosition] = useState({ x: 0, y: 0 });
     const [isActive, setIsActive] = useState(false);
     const [transition, setTransition] = useState(false);
+    const [zIndex, setZIndex] = useState(false);
+    const [cardParallax, setCardParallax] = useState(null);
 
     const getCardPosition = e => {
         let currentCard = document.getElementById(e.target.id);
@@ -119,6 +121,7 @@ const Router = () => {
             // i also can't figure out how to chain requestAnimationFrame functions yet
             // so there you go, a setTimeout hack, it seems to work I guess, not pretty though
             setTransition(true);
+            setZIndex(true);
             setIndex(i);
             setTimeout(() => {
                 setCardPosition({ x: 0, y: 0 });
@@ -131,6 +134,7 @@ const Router = () => {
         setIndex(i);
         setCardPosition({ x: 0, y: 0 });
         setIsActive(true);
+        setZIndex(true);
     };
 
     const closeCaseStudy = i => {
@@ -161,6 +165,9 @@ const Router = () => {
                     startOpen={startOpen}
                     id={i}
                     scrollDownColor={caseStudyPage.scrollDownColor}
+                    setZIndex={setZIndex}
+                    setCardParallax={setCardParallax}
+                    cardParallax={cardParallax}
                 />
             </Route>
         );
@@ -179,6 +186,8 @@ const Router = () => {
                 openCaseStudy={openCaseStudy}
                 isActive={isActive}
                 transition={transition}
+                zIndex={zIndex}
+                cardParallax={cardParallax}
             ></MainContent>
             <Switch>{caseStudyPages}</Switch>
         </BrowserRouter>
