@@ -13,17 +13,30 @@
         max-width: 1200px;
         margin: 0 auto;
         color: #333;
-        font-size: 18px;
+        font-size: 24px;
         padding: 120px 24px;
-        img {
-            width: 100%;
-            margin: 80px 0 120px;
-            @media all and (max-width: 728px) {
-                margin: 80px 0;
-            }
-        }
         @media all and (max-width: 728px) {
             padding: 80px 24px;
+            font-size: 18px;
+        }
+        img {
+            width: 100%;
+            margin-bottom: 80px;
+        }
+    }
+    .images {
+        margin: 80px 0 120px;
+        @media all and (max-width: 728px) {
+            margin: 80px 0;
+        }
+        img {
+            margin-bottom: 120px;
+            @media all and (max-width: 728px) {
+                margin-bottom: 80px;
+            }
+            &:last-of-type {
+                margin-bottom: 0;
+            }
         }
     }
     .copy {
@@ -38,6 +51,7 @@
         margin: 0 0 48px 0;
         font-size: 48px;
         font-weight: 700;
+        letter-spacing: 0.8px;
         @media all and (max-width: 728px) {
             font-size: 32px;
         }
@@ -145,19 +159,34 @@
         opacity: 0;
         transition: all 0.24s;
         z-index: 2;
+        letter-spacing: 0.8px;
         svg {
             width: 24px;
             height: 24px;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            bottom: calc(50% - 40px);
+            bottom: calc(50% - 24px);
         }
         &.show-scroll-down {
             opacity: 1;
+            .scroll-button {
+                cursor: pointer;
+                pointer-events: auto;
+            }
         }
         @media all and (max-width: 728px) {
             font-size: 16px;
+        }
+        .scroll-button {
+            padding: 8px 8px 32px 8px;
+            pointer-events: none;
+            transition: all 0.24s;
+            @include hover-supported() {
+                &:hover {
+                    opacity: 0.4;
+                }
+            }
         }
     }
 }

@@ -7,16 +7,19 @@ const Router = () => {
     const caseStudies = [
         {
             title: 'About Me',
+            mockup: '',
             link: '/portfolio/about-me',
             scrollDownColor: '#333',
             copy: {
                 __html:
-                    "<h2>Hi! I’m a web developer and designer.</h2><p>I like to make things on the internet that are pretty and easy to use. I strongly dislike things that are pretty at the expense of being easy to use. But sometimes that's what people want, and I'm also a pathological people pleaser.</p><p>I like to use cool new technology, but I'm agnostic about which ones for the most part. I hold a seemingly controversial belief that a stable, well written plugin that saves time and makes projects more maintainable is a good thing.</p><h2>Get in touch:</h2><p>If you'd like to get in touch to build something cool or just to argue about which text editor is best, please get in touch via <a href='mailto:matthew.adshead@gmail.com'>email</a> or via <a href='https://www.linkedin.com/in/matthew-adshead-072a3596/' target='_blank'>LinkedIn</a>.</p>"
+                    "<h2>Hi! I’m a web developer and designer.</h2><p>I like to make things on the internet that are pretty and easy to use. I strongly dislike things that are pretty at the expense of being easy to use. But sometimes that's what people want, and I'm also a pathological people pleaser.</p><p>I like to use cool new technologies, but I'm agnostic about which ones for the most part. I hold a seemingly controversial belief that a stable, well written plugin that saves time and makes projects more maintainable is a good thing.</p><h2>Get in touch:</h2><p>If you'd like to get in touch to build something cool or just to argue about which text editor is best, please get in touch via <a href='mailto:matthew.adshead@gmail.com'>email</a> or <a href='https://www.linkedin.com/in/matthew-adshead-072a3596/' target='_blank'>LinkedIn</a>.</p>"
             },
-            image: '/portfolio/img/matthew-adshead.jpg'
+            tags: [],
+            images: ['/portfolio/img/matthew-adshead.jpg']
         },
         {
             title: 'Archetto Towns',
+            mockup: '/portfolio/img/archetto-towns-ipad.jpg',
             link: '/portfolio/archetto-towns',
             scrollDownColor: '#333',
             copy: {
@@ -26,10 +29,30 @@ const Router = () => {
             externalLink: 'https://sales.archettotowns.com/',
             externalPrettyLink: 'sales.archettotowns.com',
             tags: ['React', 'Redux', 'JavaScript', 'WordPress', 'REST API'],
-            image: '/portfolio/img/archetto.jpg'
+            images: [
+                '/portfolio/img/archetto-towns-home.jpg',
+                '/portfolio/img/archetto-towns-area.jpg',
+                '/portfolio/img/archetto-towns-site-plan.jpg',
+                // '/portfolio/img/archetto-towns-site-plan-open.jpg',
+                // '/portfolio/img/archetto-towns-floorplans-select-product.jpg',
+                '/portfolio/img/archetto-towns-floorplan-list.jpg',
+                '/portfolio/img/archetto-towns-floorplan-grid.jpg',
+                '/portfolio/img/archetto-towns-floorplan.jpg',
+                // '/portfolio/img/archetto-towns-floorplan-zoom.jpg',
+                // '/portfolio/img/archetto-towns-email.jpg',
+                '/portfolio/img/archetto-towns-compare-list.jpg',
+                // '/portfolio/img/archetto-towns-compare.jpg',
+                // '/portfolio/img/archetto-towns-features.jpg',
+                // '/portfolio/img/archetto-towns-gallery-video.jpg',
+                '/portfolio/img/archetto-towns-gallery-renderings.jpg',
+                // '/portfolio/img/archetto-towns-gallery-area.jpg',
+                // '/portfolio/img/archetto-towns-about.jpg',
+                '/portfolio/img/archetto-towns-contact.jpg'
+            ]
         },
         {
             title: 'Annie Burgess',
+            mockup: '/portfolio/img/annie-burgess-ipad.jpg',
             link: '/portfolio/annie-burgess',
             scrollDownColor: '#333',
             copy: {
@@ -38,11 +61,15 @@ const Router = () => {
             },
             externalLink: 'http://annieburgessart.com/',
             externalPrettyLink: 'annieburgessart.com',
-            tags: ['JavaScript', 'WordPress', 'Barba'],
-            image: '/portfolio/img/annie-burgess.jpg'
+            tags: ['JavaScript', 'jQuery', 'PHP', 'WordPress', 'Barba'],
+            images: [
+                '/portfolio/img/annie-burgess-gallery.jpg',
+                '/portfolio/img/annie-burgess-content.jpg'
+            ]
         },
         {
             title: 'Marlin Spring',
+            mockup: '/portfolio/img/marlin-spring-ipad.jpg',
             link: '/portfolio/marlin-spring',
             scrollDownColor: 'white',
             copy: {
@@ -51,11 +78,18 @@ const Router = () => {
             },
             externalLink: 'https://marlinspring.com/',
             externalPrettyLink: 'marlinspring.com',
-            tags: ['WordPress', 'JavaScript', 'jQuery'],
-            image: '/portfolio/img/marlin-spring.jpg'
+            tags: ['WordPress', 'JavaScript', 'jQuery', 'PHP'],
+            images: [
+                '/portfolio/img/marlin-spring-home.jpg',
+                '/portfolio/img/marlin-spring-our-story.jpg',
+                '/portfolio/img/marlin-spring-development.jpg',
+                '/portfolio/img/marlin-spring-foundation.jpg',
+                '/portfolio/img/marlin-spring-contact.jpg'
+            ]
         },
         {
             title: 'Polo Travel',
+            mockup: '/portfolio/img/polo-travel-ipad.jpg',
             link: '/portfolio/polo-travel',
             scrollDownColor: '#333',
             copy: {
@@ -64,11 +98,18 @@ const Router = () => {
             },
             externalLink: 'https://polotravelltd.com/',
             externalPrettyLink: 'polotravelltd.com',
-            tags: ['WordPress', 'JavaScript', 'jQuery'],
-            image: '/portfolio/img/polo-travel.jpg'
+            tags: ['WordPress', 'JavaScript', 'jQuery', 'PHP'],
+            images: [
+                '/portfolio/img/polo-travel-home.jpg',
+                '/portfolio/img/polo-travel-plan-your-trip.jpg',
+                '/portfolio/img/polo-travel-travel-styles.jpg',
+                '/portfolio/img/polo-travel-country.jpg',
+                '/portfolio/img/polo-travel-contact.jpg'
+            ]
         },
         {
             title: 'Wolfecorp',
+            mockup: '/portfolio/img/wolfecorp-ipad.jpg',
             link: '/portfolio/wolfecorp',
             scrollDownColor: 'white',
             copy: {
@@ -77,8 +118,15 @@ const Router = () => {
             },
             externalLink: 'https://wolfecorp.com/',
             externalPrettyLink: 'wolfecorp.com',
-            tags: ['WordPress', 'JavaScript', 'jQuery'],
-            image: '/portfolio/img/wolfecorp.jpg'
+            tags: ['WordPress', 'JavaScript', 'jQuery', 'PHP'],
+            images: [
+                '/portfolio/img/wolfecorp-home.jpg',
+                '/portfolio/img/wolfecorp-properties.jpg',
+                '/portfolio/img/wolfecorp-property.jpg',
+                '/portfolio/img/wolfecorp-about-us.jpg',
+                '/portfolio/img/wolfecorp-blog.jpg',
+                '/portfolio/img/wolfecorp-contact.jpg'
+            ]
         }
         // {
         //     title: 'Political Campaign',
@@ -90,8 +138,8 @@ const Router = () => {
         // },
         //     externalLink: 'https://google.com/',
         //     externalPrettyLink: 'google.com',
-        //     tags: ['WordPress', 'JavaScript', 'jQuery'],
-        //     image: '/portfolio/img/political-campaign.png'
+        //     tags: ['WordPress', 'JavaScript', 'jQuery', 'PHP],
+        // images: ['/portfolio/img/matthew-adshead.jpg']
         // }
     ];
 
@@ -101,6 +149,7 @@ const Router = () => {
     const [transition, setTransition] = useState(false);
     const [zIndex, setZIndex] = useState(false);
     const [cardParallax, setCardParallax] = useState(null);
+    const [startOnCaseStudy, setStartOnCaseStudy] = useState(true);
 
     const getCardPosition = e => {
         let currentCard = document.getElementById(e.target.id);
@@ -120,6 +169,7 @@ const Router = () => {
             // so evidently promise chains don't happen in a way that guarantees a repaint between them
             // i also can't figure out how to chain requestAnimationFrame functions yet
             // so there you go, a setTimeout hack, it seems to work I guess, not pretty though
+            setStartOnCaseStudy(false);
             setTransition(true);
             setZIndex(true);
             setIndex(i);
@@ -131,10 +181,12 @@ const Router = () => {
     };
 
     const startOpen = i => {
-        setIndex(i);
-        setCardPosition({ x: 0, y: 0 });
-        setIsActive(true);
-        setZIndex(true);
+        if (startOnCaseStudy) {
+            setIndex(i);
+            setCardPosition({ x: 0, y: 0 });
+            setIsActive(true);
+            setZIndex(true);
+        }
     };
 
     const closeCaseStudy = i => {
@@ -168,6 +220,9 @@ const Router = () => {
                     setZIndex={setZIndex}
                     setCardParallax={setCardParallax}
                     cardParallax={cardParallax}
+                    tags={caseStudyPage.tags}
+                    images={caseStudyPage.images}
+                    mockup={caseStudyPage.mockup}
                 />
             </Route>
         );

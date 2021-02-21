@@ -11,10 +11,6 @@ const CaseStudy = props => {
     const scrollDown = useRef(null);
 
     useEffect(() => {
-        props.startOpen(props.id);
-    }, []);
-
-    useEffect(() => {
         let body = document.querySelector('html');
 
         const scrollFunction = () => {
@@ -56,6 +52,7 @@ const CaseStudy = props => {
     });
 
     useEffect(() => {
+        props.startOpen(props.id);
         setTimeout(() => {
             if (scrollDown.current !== null) {
                 scrollDown.current.classList.add('show-scroll-down');
@@ -67,6 +64,19 @@ const CaseStudy = props => {
         props.closeCaseStudy(props.i);
         setIsTop(false);
     };
+
+    const scrollDownEvent = () => {
+        let windowHeight = window.innerHeight;
+        window.scrollTo({ top: windowHeight, behavior: 'smooth' });
+    };
+
+    const tags = props.tags.map((tag, i) => {
+        return <li key={i}>{tag}</li>;
+    });
+
+    const images = props.images.map((image, i) => {
+        return <img key={i} src={image} alt={props.title} />;
+    });
 
     return (
         <div className='CaseStudy'>
@@ -81,12 +91,25 @@ const CaseStudy = props => {
             >
                 <HomeIcon />
             </div>
-            <div className='scroll-down' style={{ color: props.scrollDownColor }} ref={scrollDown}>
-                Scroll Down
-                <ChevronIcon />
+            <div
+                className='scroll-down'
+                style={{ color: props.scrollDownColor }}
+                ref={scrollDown}
+                role='button'
+            >
+                <div
+                    className='scroll-button'
+                    onClick={() => {
+                        scrollDownEvent();
+                    }}
+                >
+                    Scroll Down
+                    <ChevronIcon />
+                </div>
             </div>
             <div className='content'>
                 <div className='wrapper'>
+                    {props.mockup && <img src={props.mockup} alt={props.title} />}
                     <div className='copy'>
                         <h1>{props.title}</h1>
                         <div dangerouslySetInnerHTML={props.copy}></div>
@@ -95,20 +118,14 @@ const CaseStudy = props => {
                                 {props.externalPrettyLink}
                             </a>
                         )}
-                        {props.tags && (
+                        {props.tags[0] && (
                             <div className='tags'>
                                 <h2>Tags:</h2>
-                                <ul>
-                                    <li>React</li>
-                                    <li>Redux</li>
-                                    <li>JavaScript</li>
-                                    <li>WordPress</li>
-                                    <li>REST API</li>
-                                </ul>
+                                <ul>{tags}</ul>
                             </div>
                         )}
                     </div>
-                    {props.image && <img src={props.image} alt={props.title} />}
+                    {props.images && <div className='images'>{images}</div>}
                     <div className='home-link'>
                         <span
                             id='home-link'

@@ -22,7 +22,7 @@ const WorkCard = props => {
                     top: props.i === props.index ? props.cardPosition.y + 'px' : 'auto',
                     left: props.i === props.index ? props.cardPosition.x + 'px' : 'auto',
                     position: props.i === props.index ? 'fixed' : 'absolute',
-                    transition: props.transition ? 'all 0.24s' : 'none',
+                    transition: props.transition ? 'all 0.24s' : 'opacity 0.24s',
                     zIndex: props.i === props.index && props.zIndex ? '1' : 'auto'
                 }}
             >
