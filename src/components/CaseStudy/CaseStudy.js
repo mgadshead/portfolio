@@ -46,6 +46,10 @@ const CaseStudy = props => {
 
         document.addEventListener('scroll', scrollFunction);
 
+        window.onpopstate = function (event) {
+            window.location.reload();
+        };
+
         return () => {
             document.removeEventListener('scroll', scrollFunction);
         };
