@@ -27,7 +27,7 @@ const WorkCard = props => {
                 }}
             >
                 <img
-                    src={'/portfolio/img/' + props.logo}
+                    src={process.env.PUBLIC_URL + '/img/' + props.logo}
                     style={{
                         transform:
                             props.i === props.index

@@ -8,19 +8,19 @@ const Router = () => {
         {
             title: 'About Me',
             mockup: '',
-            link: '/portfolio/about-me',
+            link: '/about-me',
             scrollDownColor: '#333',
             copy: {
                 __html:
                     "<h2>Hi! I’m a web developer and designer.</h2><p>I like to make things on the internet that are pretty and easy to use. I strongly dislike things that are pretty at the expense of being easy to use. But sometimes that's what people want, and I'm also a pathological people pleaser.</p><p>I like to use cool new technologies, but I'm agnostic about which ones for the most part. I hold a seemingly controversial belief that a stable, well written plugin that saves time and makes projects more maintainable is a good thing.</p><h2>Get in touch:</h2><p>If you'd like to get in touch to build something cool or just to argue about which text editor is best, please get in touch via <a href='mailto:matthew.adshead@gmail.com'>email</a> or <a href='https://www.linkedin.com/in/matthew-adshead-072a3596/' target='_blank'>LinkedIn</a>.</p>"
             },
             tags: [],
-            images: ['/portfolio/img/matthew-adshead.jpg']
+            images: ['/img/matthew-adshead.jpg']
         },
         {
             title: 'Archetto Towns',
-            mockup: '/portfolio/img/archetto-towns-ipad.jpg',
-            link: '/portfolio/archetto-towns',
+            mockup: '/img/archetto-towns-ipad.jpg',
+            link: '/archetto-towns',
             scrollDownColor: '#333',
             copy: {
                 __html:
@@ -30,30 +30,30 @@ const Router = () => {
             externalPrettyLink: 'sales.archettotowns.com',
             tags: ['React', 'Redux', 'JavaScript', 'WordPress', 'REST API'],
             images: [
-                '/portfolio/img/archetto-towns-home.jpg',
-                '/portfolio/img/archetto-towns-area.jpg',
-                '/portfolio/img/archetto-towns-site-plan.jpg',
-                // '/portfolio/img/archetto-towns-site-plan-open.jpg',
-                // '/portfolio/img/archetto-towns-floorplans-select-product.jpg',
-                '/portfolio/img/archetto-towns-floorplan-list.jpg',
-                '/portfolio/img/archetto-towns-floorplan-grid.jpg',
-                '/portfolio/img/archetto-towns-floorplan.jpg',
-                // '/portfolio/img/archetto-towns-floorplan-zoom.jpg',
-                // '/portfolio/img/archetto-towns-email.jpg',
-                '/portfolio/img/archetto-towns-compare-list.jpg',
-                // '/portfolio/img/archetto-towns-compare.jpg',
-                // '/portfolio/img/archetto-towns-features.jpg',
-                // '/portfolio/img/archetto-towns-gallery-video.jpg',
-                '/portfolio/img/archetto-towns-gallery-renderings.jpg',
-                // '/portfolio/img/archetto-towns-gallery-area.jpg',
-                // '/portfolio/img/archetto-towns-about.jpg',
-                '/portfolio/img/archetto-towns-contact.jpg'
+                '/img/archetto-towns-home.jpg',
+                '/img/archetto-towns-area.jpg',
+                '/img/archetto-towns-site-plan.jpg',
+                // '/img/archetto-towns-site-plan-open.jpg',
+                // '/img/archetto-towns-floorplans-select-product.jpg',
+                '/img/archetto-towns-floorplan-list.jpg',
+                '/img/archetto-towns-floorplan-grid.jpg',
+                '/img/archetto-towns-floorplan.jpg',
+                // '/img/archetto-towns-floorplan-zoom.jpg',
+                // '/img/archetto-towns-email.jpg',
+                '/img/archetto-towns-compare-list.jpg',
+                // '/img/archetto-towns-compare.jpg',
+                // '/img/archetto-towns-features.jpg',
+                // '/img/archetto-towns-gallery-video.jpg',
+                '/img/archetto-towns-gallery-renderings.jpg',
+                // '/img/archetto-towns-gallery-area.jpg',
+                // '/img/archetto-towns-about.jpg',
+                '/img/archetto-towns-contact.jpg'
             ]
         },
         {
             title: 'Annie Burgess',
-            mockup: '/portfolio/img/annie-burgess-ipad.jpg',
-            link: '/portfolio/annie-burgess',
+            mockup: '/img/annie-burgess-ipad.jpg',
+            link: '/annie-burgess',
             scrollDownColor: '#333',
             copy: {
                 __html:
@@ -62,15 +62,12 @@ const Router = () => {
             externalLink: 'http://annieburgessart.com/',
             externalPrettyLink: 'annieburgessart.com',
             tags: ['JavaScript', 'jQuery', 'PHP', 'WordPress', 'Barba'],
-            images: [
-                '/portfolio/img/annie-burgess-gallery.jpg',
-                '/portfolio/img/annie-burgess-content.jpg'
-            ]
+            images: ['/img/annie-burgess-gallery.jpg', '/img/annie-burgess-content.jpg']
         },
         {
             title: 'Marlin Spring',
-            mockup: '/portfolio/img/marlin-spring-ipad.jpg',
-            link: '/portfolio/marlin-spring',
+            mockup: '/img/marlin-spring-ipad.jpg',
+            link: '/marlin-spring',
             scrollDownColor: 'white',
             copy: {
                 __html:
@@ -80,17 +77,17 @@ const Router = () => {
             externalPrettyLink: 'marlinspring.com',
             tags: ['WordPress', 'JavaScript', 'jQuery', 'PHP'],
             images: [
-                '/portfolio/img/marlin-spring-home.jpg',
-                '/portfolio/img/marlin-spring-our-story.jpg',
-                '/portfolio/img/marlin-spring-development.jpg',
-                '/portfolio/img/marlin-spring-foundation.jpg',
-                '/portfolio/img/marlin-spring-contact.jpg'
+                '/img/marlin-spring-home.jpg',
+                '/img/marlin-spring-our-story.jpg',
+                '/img/marlin-spring-development.jpg',
+                '/img/marlin-spring-foundation.jpg',
+                '/img/marlin-spring-contact.jpg'
             ]
         },
         {
             title: 'Polo Travel',
-            mockup: '/portfolio/img/polo-travel-ipad.jpg',
-            link: '/portfolio/polo-travel',
+            mockup: '/img/polo-travel-ipad.jpg',
+            link: '/polo-travel',
             scrollDownColor: '#333',
             copy: {
                 __html:
@@ -100,17 +97,17 @@ const Router = () => {
             externalPrettyLink: 'polotravelltd.com',
             tags: ['WordPress', 'JavaScript', 'jQuery', 'PHP'],
             images: [
-                '/portfolio/img/polo-travel-home.jpg',
-                '/portfolio/img/polo-travel-plan-your-trip.jpg',
-                '/portfolio/img/polo-travel-travel-styles.jpg',
-                '/portfolio/img/polo-travel-country.jpg',
-                '/portfolio/img/polo-travel-contact.jpg'
+                '/img/polo-travel-home.jpg',
+                '/img/polo-travel-plan-your-trip.jpg',
+                '/img/polo-travel-travel-styles.jpg',
+                '/img/polo-travel-country.jpg',
+                '/img/polo-travel-contact.jpg'
             ]
         },
         {
             title: 'Wolfecorp',
-            mockup: '/portfolio/img/wolfecorp-ipad.jpg',
-            link: '/portfolio/wolfecorp',
+            mockup: '/img/wolfecorp-ipad.jpg',
+            link: '/wolfecorp',
             scrollDownColor: 'white',
             copy: {
                 __html:
@@ -120,17 +117,17 @@ const Router = () => {
             externalPrettyLink: 'wolfecorp.com',
             tags: ['WordPress', 'JavaScript', 'jQuery', 'PHP'],
             images: [
-                '/portfolio/img/wolfecorp-home.jpg',
-                '/portfolio/img/wolfecorp-properties.jpg',
-                '/portfolio/img/wolfecorp-property.jpg',
-                '/portfolio/img/wolfecorp-about-us.jpg',
-                '/portfolio/img/wolfecorp-blog.jpg',
-                '/portfolio/img/wolfecorp-contact.jpg'
+                '/img/wolfecorp-home.jpg',
+                '/img/wolfecorp-properties.jpg',
+                '/img/wolfecorp-property.jpg',
+                '/img/wolfecorp-about-us.jpg',
+                '/img/wolfecorp-blog.jpg',
+                '/img/wolfecorp-contact.jpg'
             ]
         }
         // {
         //     title: 'Political Campaign',
-        //     link: '/portfolio/political-campaign',
+        //     link: '/political-campaign',
         // scrollDownColor: 'white',
         // copy: {
         //     __html:
@@ -139,7 +136,7 @@ const Router = () => {
         //     externalLink: 'https://google.com/',
         //     externalPrettyLink: 'google.com',
         //     tags: ['WordPress', 'JavaScript', 'jQuery', 'PHP],
-        // images: ['/portfolio/img/matthew-adshead.jpg']
+        // images: ['/img/matthew-adshead.jpg']
         // }
     ];
 

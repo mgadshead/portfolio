@@ -22,7 +22,7 @@ const CaseStudy = props => {
                 scrollDown.current.classList.remove('show-scroll-down');
                 setTimeout(() => {
                     props.setIndex(null);
-                    history.push('/portfolio');
+                    history.push('');
                     props.setZIndex(false);
                 }, 240);
             }
@@ -75,7 +75,7 @@ const CaseStudy = props => {
     });
 
     const images = props.images.map((image, i) => {
-        return <img key={i} src={image} alt={props.title} />;
+        return <img key={i} src={process.env.PUBLIC_URL + image} alt={props.title} />;
     });
 
     return (
@@ -109,7 +109,9 @@ const CaseStudy = props => {
             </div>
             <div className='content'>
                 <div className='wrapper'>
-                    {props.mockup && <img src={props.mockup} alt={props.title} />}
+                    {props.mockup && (
+                        <img src={process.env.PUBLIC_URL + props.mockup} alt={props.title} />
+                    )}
                     <div className='copy'>
                         <h1>{props.title}</h1>
                         <div dangerouslySetInnerHTML={props.copy}></div>
