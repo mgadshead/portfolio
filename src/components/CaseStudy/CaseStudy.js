@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, dangerouslySetInnerHTML } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './CaseStudy.scss';
 import { useHistory } from 'react-router-dom';
 import HomeIcon from '../HomeIcon/HomeIcon';
@@ -9,6 +9,7 @@ const CaseStudy = props => {
     const history = useHistory();
     const homeButton = useRef(null);
     const scrollDown = useRef(null);
+    const content = useRef(null);
 
     useEffect(() => {
         let body = document.querySelector('html');
@@ -70,16 +71,17 @@ const CaseStudy = props => {
     };
 
     const scrollDownEvent = () => {
-        let windowHeight = window.innerHeight;
-        window.scrollTo({ top: windowHeight, behavior: 'smooth' });
+        let scrollPosition = content.current.offsetTop;
+        console.log(scrollPosition);
+        window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
     };
 
-    const tags = props.tags.map((tag, i) => {
+    const tags = props.caseStudyPage.tags.map((tag, i) => {
         return <li key={i}>{tag}</li>;
     });
 
-    const images = props.images.map((image, i) => {
-        return <img key={i} src={process.env.PUBLIC_URL + image} alt={props.title} />;
+    const images = props.caseStudyPage.images.map((image, i) => {
+        return <img key={i} src={process.env.PUBLIC_URL + image} alt={props.caseStudyPage.title} />;
     });
 
     return (
@@ -97,7 +99,7 @@ const CaseStudy = props => {
             </div>
             <div
                 className='scroll-down'
-                style={{ color: props.scrollDownColor }}
+                style={{ color: props.caseStudyPage.scrollDownColor }}
                 ref={scrollDown}
                 role='button'
             >
@@ -111,27 +113,30 @@ const CaseStudy = props => {
                     <ChevronIcon />
                 </div>
             </div>
-            <div className='content'>
+            <div className='content' ref={content}>
                 <div className='wrapper'>
-                    {props.mockup && (
-                        <img src={process.env.PUBLIC_URL + props.mockup} alt={props.title} />
+                    {props.caseStudyPage.mockup && (
+                        <img
+                            src={process.env.PUBLIC_URL + props.caseStudyPage.mockup}
+                            alt={props.caseStudyPage.title}
+                        />
                     )}
                     <div className='copy'>
-                        <h1>{props.title}</h1>
-                        <div dangerouslySetInnerHTML={props.copy}></div>
-                        {props.externalPrettyLink && (
-                            <a href={props.externalLink} target='_blank'>
-                                {props.externalPrettyLink}
+                        <h1>{props.caseStudyPage.title}</h1>
+                        <div dangerouslySetInnerHTML={props.caseStudyPage.copy}></div>
+                        {props.caseStudyPage.externalPrettyLink && (
+                            <a href={props.caseStudyPage.externalLink} target='_blank'>
+                                {props.caseStudyPage.externalPrettyLink}
                             </a>
                         )}
-                        {props.tags[0] && (
+                        {props.caseStudyPage.tags[0] && (
                             <div className='tags'>
                                 <h2>Tags:</h2>
                                 <ul>{tags}</ul>
                             </div>
                         )}
                     </div>
-                    {props.images && <div className='images'>{images}</div>}
+                    {props.caseStudyPage.images && <div className='images'>{images}</div>}
                     <div className='home-link'>
                         <span
                             id='home-link'

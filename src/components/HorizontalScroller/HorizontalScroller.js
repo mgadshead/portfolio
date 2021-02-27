@@ -16,16 +16,15 @@ const HorizontalScroller = props => {
     const caseStudiesList = caseStudies.map((caseStudy, i) => {
         return (
             <WorkCard
-                key={i}
                 backgroundColor={caseStudy.backgroundColor}
                 logo={caseStudy.logo}
                 getCardPosition={props.getCardPosition}
                 cardPosition={props.cardPosition}
                 i={i}
+                key={i}
                 index={props.index}
                 isActive={props.isActive}
                 link={caseStudy.link}
-                getCardPosition={props.getCardPosition}
                 openCaseStudy={props.openCaseStudy}
                 transition={props.transition}
                 zIndex={props.zIndex}

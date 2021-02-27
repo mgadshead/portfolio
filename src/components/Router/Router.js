@@ -202,24 +202,15 @@ const Router = () => {
         return (
             <Route path={caseStudyPage.link} key={i}>
                 <CaseStudy
-                    title={caseStudyPage.title}
-                    copy={caseStudyPage.copy}
-                    externalLink={caseStudyPage.externalLink}
-                    externalPrettyLink={caseStudyPage.externalPrettyLink}
-                    image={caseStudyPage.image}
+                    caseStudyPage={caseStudyPage}
                     closeCaseStudy={closeCaseStudy}
                     getFullCardPosition={getFullCardPosition}
                     setIsActive={setIsActive}
                     setIndex={setIndex}
                     startOpen={startOpen}
                     id={i}
-                    scrollDownColor={caseStudyPage.scrollDownColor}
                     setZIndex={setZIndex}
                     setCardParallax={setCardParallax}
-                    cardParallax={cardParallax}
-                    tags={caseStudyPage.tags}
-                    images={caseStudyPage.images}
-                    mockup={caseStudyPage.mockup}
                 />
             </Route>
         );

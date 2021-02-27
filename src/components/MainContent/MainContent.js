@@ -19,11 +19,7 @@ const MainContent = props => {
     return (
         <div className='MainContent' ref={viewport}>
             <HorizontalScroller
-                closeCaseStudy={props.closeCaseStudy}
-                setCardPosition={props.setCardPosition}
                 index={props.index}
-                setIndex={props.setIndex}
-                setIsActive={props.setIsActive}
                 cardPosition={props.cardPosition}
                 getCardPosition={props.getCardPosition}
                 openCaseStudy={props.openCaseStudy}
