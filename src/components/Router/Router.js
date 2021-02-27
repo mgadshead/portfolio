@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CaseStudy from '../CaseStudy/CaseStudy';
-import Site from '../Site/Site';
+import MainContent from '../MainContent/MainContent';
 import { caseStudies } from '../../data/data';
 
 const Router = () => {
@@ -11,13 +11,11 @@ const Router = () => {
     const [transition, setTransition] = useState(false);
     const [zIndex, setZIndex] = useState(false);
     const [cardParallax, setCardParallax] = useState(null);
-    const [isTop, setIsTop] = useState(true);
     const [startOnCaseStudy, setStartOnCaseStudy] = useState(true);
-    const homeButton = useRef(null);
-    const scrollDown = useRef(null);
     const transitionTime = 240; // Change $transition in App.scss to match
 
     const startOpen = i => {
+        // THIS FUNCTION MUST BE AT ROOT/ROUTER. STOP TRYING TO MOVE IT!
         if (startOnCaseStudy) {
             setIndex(i);
             setCardPosition({ x: 0, y: 0 });
@@ -36,11 +34,7 @@ const Router = () => {
                     id={i}
                     setZIndex={setZIndex}
                     setCardParallax={setCardParallax}
-                    setIsTop={setIsTop}
-                    isTop={isTop}
                     transitionTime={transitionTime}
-                    homeButton={homeButton}
-                    scrollDown={scrollDown}
                     setTransition={setTransition}
                     setCardPosition={setCardPosition}
                     startOpen={startOpen}
@@ -51,24 +45,22 @@ const Router = () => {
 
     return (
         <BrowserRouter>
-            <Site
+            <MainContent
                 caseStudies={caseStudies}
-                setCardPosition={setCardPosition}
                 index={index}
                 setIndex={setIndex}
-                setIsActive={setIsActive}
                 cardPosition={cardPosition}
+                setCardPosition={setCardPosition}
                 isActive={isActive}
-                transition={transition}
+                setIsActive={setIsActive}
                 zIndex={zIndex}
+                setZIndex={setZIndex}
+                transition={transition}
+                setTransition={setTransition}
                 cardParallax={cardParallax}
                 transitionTime={transitionTime}
                 setStartOnCaseStudy={setStartOnCaseStudy}
-                setTransition={setTransition}
-                setZIndex={setZIndex}
-                setIndex={setIndex}
-                setIsActive={setIsActive}
-            ></Site>
+            ></MainContent>
             <Switch>{caseStudyPages}</Switch>
         </BrowserRouter>
     );

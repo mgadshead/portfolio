@@ -11,20 +11,20 @@ const HorizontalScroller = props => {
                 link={caseStudy.link}
                 cardPosition={props.cardPosition}
                 setCardPosition={props.setCardPosition}
+                isActive={props.isActive}
+                setIsActive={props.setIsActive}
+                transition={props.transition}
+                setTransition={props.setTransition}
+                zIndex={props.zIndex}
+                setZIndex={props.setZIndex}
+                setIndex={props.setIndex}
+                index={props.index}
                 i={i}
                 key={i}
-                index={props.index}
-                isActive={props.isActive}
-                openCaseStudy={props.openCaseStudy}
-                transition={props.transition}
-                zIndex={props.zIndex}
                 cardParallax={props.cardParallax}
                 transitionTime={props.transitionTime}
                 setStartOnCaseStudy={props.setStartOnCaseStudy}
-                setTransition={props.setTransition}
-                setZIndex={props.setZIndex}
-                setIndex={props.setIndex}
-                setIsActive={props.setIsActive}
+                openCaseStudy={props.openCaseStudy}
             />
         );
     });

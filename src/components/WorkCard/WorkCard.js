@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './WorkCard.scss';
 import { Link } from 'react-router-dom';
 
@@ -22,6 +22,7 @@ const WorkCard = props => {
             }, 16);
         }
     };
+
     return (
         <div
             className={`WorkCard${props.i === props.index && props.isActive ? ' active' : ''}`}

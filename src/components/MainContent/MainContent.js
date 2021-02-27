@@ -4,7 +4,7 @@ import HorizontalScroller from '../HorizontalScroller/HorizontalScroller';
 import { useScrollBoost } from 'react-scrollbooster';
 
 const MainContent = props => {
-    const [viewport, scrollbooster] = useScrollBoost({
+    const [viewport] = useScrollBoost({
         direction: 'horizontal',
         scrollMode: 'native',
         emulateScroll: true,
@@ -21,19 +21,18 @@ const MainContent = props => {
             <HorizontalScroller
                 caseStudies={props.caseStudies}
                 index={props.index}
+                setIndex={props.setIndex}
                 cardPosition={props.cardPosition}
-                openCaseStudy={props.openCaseStudy}
+                setCardPosition={props.setCardPosition}
                 isActive={props.isActive}
-                transition={props.transition}
+                setIsActive={props.setIsActive}
                 zIndex={props.zIndex}
+                setZIndex={props.setZIndex}
+                transition={props.transition}
+                setTransition={props.setTransition}
                 cardParallax={props.cardParallax}
                 transitionTime={props.transitionTime}
-                setCardPosition={props.setCardPosition}
                 setStartOnCaseStudy={props.setStartOnCaseStudy}
-                setTransition={props.setTransition}
-                setZIndex={props.setZIndex}
-                setIndex={props.setIndex}
-                setIsActive={props.setIsActive}
             />
         </div>
     );
