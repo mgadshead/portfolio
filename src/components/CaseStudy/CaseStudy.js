@@ -47,6 +47,7 @@ const CaseStudy = props => {
     });
 
     useEffect(() => {
+        alert('test');
         props.startOpen(props.id);
         setTimeout(() => {
             if (scrollDown.current !== null) {
