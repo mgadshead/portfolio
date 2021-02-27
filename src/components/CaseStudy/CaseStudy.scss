@@ -93,16 +93,16 @@
     .home-link {
         display: flex;
         justify-content: center;
-        color: $blue;
         text-decoration: none;
-        transition: $transition;
         font-weight: 700;
         #home-link {
+            color: $blue;
+            transition: $transition;
             cursor: pointer;
-        }
-        @include hover-supported() {
-            &:hover {
-                color: rgba($blue, 0.4);
+            @include hover-supported() {
+                &:hover {
+                    color: rgba($blue, 0.4);
+                }
             }
         }
     }
