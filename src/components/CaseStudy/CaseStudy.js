@@ -1,53 +1,67 @@
-import React, { useEffect, useState, useRef } from 'react';
-import './CaseStudy.scss';
+import React, { useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
+import './CaseStudy.scss';
 import HomeIcon from '../HomeIcon/HomeIcon';
 import ChevronIcon from '../ChevronIcon/ChevronIcon';
 
 const CaseStudy = props => {
-    const [isTop, setIsTop] = useState(true);
-    const history = useHistory();
-    const homeButton = useRef(null);
-    const scrollDown = useRef(null);
     const content = useRef(null);
+    const history = useHistory();
+
+    const initCloseCaseStudy = () => {
+        props.setTransition(true);
+        props.setIsTop(false);
+        // window.scrollTo({ top: 0, behavior: 'smooth' });
+        // window.scrollTo(window.scrollX, window.scrollY + 1);
+        setTimeout(() => {
+            // window.scrollTo(window.scrollX, window.scrollY - 1);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 1);
+    };
+
+    const closeCaseStudy = () => {
+        let currentCardContainer = document.querySelector('.WorkCard.active');
+        let currentCardPosition = currentCardContainer.getBoundingClientRect();
+        props.setCardPosition({ x: currentCardPosition.x, y: currentCardPosition.y });
+        props.setIsTop(true);
+        props.setIsActive(false);
+        props.homeButton.current.classList.remove('show-home-button');
+        props.scrollDown.current.classList.remove('show-scroll-down');
+        setTimeout(() => {
+            props.setIndex(null);
+            history.push('');
+            props.setZIndex(false);
+        }, props.transitionTime);
+    };
 
     useEffect(() => {
         let body = document.querySelector('html');
 
         const scrollFunction = () => {
-            if (body.scrollTop === 0 && isTop === false) {
-                setIsTop(true);
-                props.getFullCardPosition();
-                props.setIsActive(false);
-                homeButton.current.classList.remove('show-home-button');
-                scrollDown.current.classList.remove('show-scroll-down');
-                setTimeout(() => {
-                    props.setIndex(null);
-                    history.push('');
-                    props.setZIndex(false);
-                }, 240);
+            if (body.scrollTop === 0 && props.isTop === false) {
+                closeCaseStudy();
             }
-            if (body.scrollTop === 0 && isTop === true) {
-                scrollDown.current.classList.add('show-scroll-down');
+            if (body.scrollTop === 0 && props.isTop === true) {
+                props.current.classList.add('show-scroll-down');
             }
             if (body.scrollTop > 0) {
                 let cardParallaxPosition = body.scrollTop * -0.32;
                 props.setCardParallax(cardParallaxPosition);
-                scrollDown.current.classList.remove('show-scroll-down');
+                props.scrollDown.current.classList.remove('show-scroll-down');
             } else {
                 props.setCardParallax(0);
             }
         };
 
         setTimeout(() => {
-            if (homeButton.current !== null) {
-                homeButton.current.classList.add('show-home-button');
+            if (props.homeButton.current !== null) {
+                props.homeButton.current.classList.add('show-home-button');
             }
-        }, 240);
+        }, props.transitionTime);
 
         document.addEventListener('scroll', scrollFunction);
 
-        window.onpopstate = function (event) {
+        window.onpopstate = function () {
             window.location.reload();
         };
 
@@ -59,20 +73,14 @@ const CaseStudy = props => {
     useEffect(() => {
         props.startOpen(props.id);
         setTimeout(() => {
-            if (scrollDown.current !== null) {
-                scrollDown.current.classList.add('show-scroll-down');
+            if (props.scrollDown.current !== null) {
+                props.scrollDown.current.classList.add('show-scroll-down');
             }
-        }, 240);
+        }, props.transitionTime);
     }, []);
-
-    const onClickFunctions = () => {
-        props.closeCaseStudy(props.i);
-        setIsTop(false);
-    };
 
     const scrollDownEvent = () => {
         let scrollPosition = content.current.offsetTop;
-        console.log(scrollPosition);
         window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
     };
 
@@ -90,9 +98,9 @@ const CaseStudy = props => {
                 className='home-button'
                 id='home-button'
                 role='button'
-                ref={homeButton}
+                ref={props.homeButton}
                 onClick={() => {
-                    onClickFunctions();
+                    initCloseCaseStudy();
                 }}
             >
                 <HomeIcon />
@@ -100,7 +108,7 @@ const CaseStudy = props => {
             <div
                 className='scroll-down'
                 style={{ color: props.caseStudyPage.scrollDownColor }}
-                ref={scrollDown}
+                ref={props.scrollDown}
                 role='button'
             >
                 <div
@@ -141,7 +149,7 @@ const CaseStudy = props => {
                         <span
                             id='home-link'
                             onClick={() => {
-                                onClickFunctions();
+                                initCloseCaseStudy();
                             }}
                             role='button'
                         >

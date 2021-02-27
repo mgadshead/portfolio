@@ -2,6 +2,7 @@
 
 $blue: #0ddbfd;
 $yellow: #fffd82;
+$transition: all 0.24s; // Change transitionTime in Router.js to match
 
 @mixin hover-supported {
     @media not all and (pointer: coarse) {

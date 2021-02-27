@@ -63,7 +63,7 @@
     a {
         color: $blue;
         text-decoration: none;
-        transition: all 0.24s;
+        transition: $transition;
         font-weight: 700;
         @include hover-supported() {
             &:hover {
@@ -95,7 +95,7 @@
         justify-content: center;
         color: $blue;
         text-decoration: none;
-        transition: all 0.24s;
+        transition: $transition;
         font-weight: 700;
         #home-link {
             cursor: pointer;
@@ -115,7 +115,7 @@
         justify-content: center;
         align-items: center;
         border: 2px solid $blue;
-        transition: all 0.24s;
+        transition: $transition;
         position: fixed;
         top: 24px;
         right: 24px;
@@ -135,7 +135,7 @@
         svg {
             width: 24px;
             height: 24px;
-            transition: all 0.24s;
+            transition: $transition;
             path {
                 fill: #fff;
             }
@@ -157,7 +157,7 @@
         justify-content: center;
         align-items: center;
         opacity: 0;
-        transition: all 0.24s;
+        transition: $transition;
         z-index: 2;
         letter-spacing: 0.8px;
         svg {
@@ -181,7 +181,7 @@
         .scroll-button {
             padding: 8px 8px 32px 8px;
             pointer-events: none;
-            transition: all 0.24s;
+            transition: $transition;
             @include hover-supported() {
                 &:hover {
                     opacity: 0.4;

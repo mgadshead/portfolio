@@ -1,26 +1,14 @@
 import React from 'react';
-import './MainContent.scss';
-import HorizontalScroller from '../HorizontalScroller/HorizontalScroller';
-import { useScrollBoost } from 'react-scrollbooster';
+import MainContent from '../MainContent/MainContent';
 
-const MainContent = props => {
-    const [viewport, scrollbooster] = useScrollBoost({
-        direction: 'horizontal',
-        scrollMode: 'native',
-        emulateScroll: true,
-        onClick: (state, event) => {
-            if (state.isDragging) {
-                event.preventDefault();
-                event.stopImmediatePropagation();
-            }
-        }
-    });
-
+const Site = props => {
     return (
-        <div className='MainContent' ref={viewport}>
-            <HorizontalScroller
-                caseStudies={props.caseStudies}
+        <div className='Site'>
+            <MainContent
+                setCardPosition={props.setCardPosition}
                 index={props.index}
+                setIndex={props.setIndex}
+                setIsActive={props.setIsActive}
                 cardPosition={props.cardPosition}
                 openCaseStudy={props.openCaseStudy}
                 isActive={props.isActive}
@@ -28,15 +16,16 @@ const MainContent = props => {
                 zIndex={props.zIndex}
                 cardParallax={props.cardParallax}
                 transitionTime={props.transitionTime}
+                caseStudies={props.caseStudies}
                 setCardPosition={props.setCardPosition}
                 setStartOnCaseStudy={props.setStartOnCaseStudy}
                 setTransition={props.setTransition}
                 setZIndex={props.setZIndex}
                 setIndex={props.setIndex}
                 setIsActive={props.setIsActive}
-            />
+            ></MainContent>
         </div>
     );
 };
 
-export default MainContent;
+export default Site;
