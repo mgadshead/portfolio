@@ -103,6 +103,10 @@ const CaseStudy = props => {
         }
     };
 
+    window.onpopstate = function () {
+        window.scrollTo(0, 0);
+    };
+
     const scrollDownEvent = () => {
         let scrollPosition = content.current.offsetTop;
         window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
