@@ -69,12 +69,16 @@ const CaseStudy = props => {
     const initCloseCaseStudy = () => {
         let body = document.querySelector('html');
 
-        if (body.scrollTop === 0) {
+        if (homeButton.current === null) {
             closeCaseStudy();
         } else {
-            props.setTransition(true);
-            setIsTop(false);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (body.scrollTop === 0) {
+                closeCaseStudy();
+            } else {
+                props.setTransition(true);
+                setIsTop(false);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
     };
 
@@ -101,10 +105,6 @@ const CaseStudy = props => {
                 props.setZIndex(false);
             }, props.transitionTime);
         }
-    };
-
-    window.onpopstate = function () {
-        window.scrollTo(0, 0);
     };
 
     const scrollDownEvent = () => {
