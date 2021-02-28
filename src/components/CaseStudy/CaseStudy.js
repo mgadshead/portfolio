@@ -15,6 +15,17 @@ const CaseStudy = props => {
     smoothscroll.polyfill();
 
     useEffect(() => {
+        // Listen for a change in route and fire the close animation whenever it happens
+        // This means it'll work on back/forward
+        return history.listen(location => {
+            // I want the close animation to run when we go to the home page
+            if (location.pathname === '/') {
+                initCloseCaseStudy();
+            }
+        });
+    }, [history]);
+
+    useEffect(() => {
         let body = document.querySelector('html');
 
         const scrollFunction = () => {
@@ -47,7 +58,6 @@ const CaseStudy = props => {
     });
 
     useEffect(() => {
-        alert('test');
         props.startOpen(props.id);
         setTimeout(() => {
             if (scrollDown.current !== null) {
@@ -70,17 +80,27 @@ const CaseStudy = props => {
 
     const closeCaseStudy = () => {
         let currentCardContainer = document.querySelector('.WorkCard.active');
-        let currentCardPosition = currentCardContainer.getBoundingClientRect();
-        props.setCardPosition({ x: currentCardPosition.x, y: currentCardPosition.y });
-        setIsTop(true);
-        props.setIsActive(false);
-        homeButton.current.classList.remove('show-home-button');
-        scrollDown.current.classList.remove('show-scroll-down');
-        setTimeout(() => {
-            props.setIndex(null);
-            history.push('');
-            props.setZIndex(false);
-        }, props.transitionTime);
+        // Since this now fires on click as well as on page change we have to check if it's already run once
+        // I should probably do something nicer later
+        if (currentCardContainer !== null) {
+            props.setCardParallax(0);
+            let currentCardPosition = currentCardContainer.getBoundingClientRect();
+            props.setCardPosition({ x: currentCardPosition.x, y: currentCardPosition.y });
+            setIsTop(true);
+            props.setIsActive(false);
+            // Same deal down here, if it's already run once these return as null
+            if (homeButton.current !== null) {
+                homeButton.current.classList.remove('show-home-button');
+            }
+            if (scrollDown.current !== null) {
+                scrollDown.current.classList.remove('show-scroll-down');
+            }
+            setTimeout(() => {
+                props.setIndex(null);
+                history.push('');
+                props.setZIndex(false);
+            }, props.transitionTime);
+        }
     };
 
     const scrollDownEvent = () => {

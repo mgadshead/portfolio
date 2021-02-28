@@ -1,21 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './WorkCard.scss';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 const WorkCard = props => {
-    const openCaseStudy = (e, i) => {
-        if (props.index !== i) {
-            // so evidently promise chains don't happen in a way that guarantees a repaint between them
-            // i also can't figure out how to chain requestAnimationFrame functions yet
-            // so there you go, a setTimeout hack, it seems to work I guess, not pretty though
-            let currentCard = document.getElementById(e.target.id);
+    const history = useHistory();
+    const location = useLocation();
+
+    useEffect(() => {
+        // Listen for a change in route and fire the open animation whenever it happens
+        // This means it'll work on back/forward
+        return history.listen(location => {
+            // I don't want the open animation to run when we go to the home page
+            if (location.pathname !== '/') {
+                openCaseStudy(props.i);
+            }
+        });
+    }, [history]);
+
+    const openCaseStudy = i => {
+        // Get the correct card by checking if the href matches the current location
+        let currentCard = document.querySelector("a[href='" + history.location.pathname + "']");
+        // Grab the index from the id
+        let currentCardId = currentCard.id.replace(/^\D+/g, '');
+        if (currentCardId == i) {
             let currentCardContainer = currentCard.parentElement;
+            // Get the current position of the card container
             let currentCardPosition = currentCardContainer.getBoundingClientRect();
+            // Set the container to position fixed at it's current location to allow for animation
             props.setCardPosition({ x: currentCardPosition.x, y: currentCardPosition.y });
             props.setStartOnCaseStudy(false);
             props.setTransition(true);
             props.setZIndex(true);
             props.setIndex(i);
+            // Animate to full screen
+            // So evidently promise chains don't happen in a way that guarantees a repaint between them
+            // I also can't figure out how to chain requestAnimationFrame functions yet
+            // So there you go, a setTimeout hack, it seems to work I guess, not pretty though
             setTimeout(() => {
                 props.setCardPosition({ x: 0, y: 0 });
                 props.setIsActive(true);
@@ -26,7 +46,7 @@ const WorkCard = props => {
     return (
         <div
             className={`WorkCard${props.i === props.index && props.isActive ? ' active' : ''}`}
-            onClick={e => openCaseStudy(e, props.i)}
+            // onClick={e => openCaseStudy(e, props.i)}
         >
             <Link
                 to={props.link}

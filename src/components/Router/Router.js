@@ -58,6 +58,7 @@ const Router = () => {
                 transition={transition}
                 setTransition={setTransition}
                 cardParallax={cardParallax}
+                setCardParallax={setCardParallax}
                 transitionTime={transitionTime}
                 setStartOnCaseStudy={setStartOnCaseStudy}
             ></MainContent>
