@@ -41,6 +41,7 @@ const Router = () => {
                     startOpen={startOpen}
                     caseStudies={caseStudies}
                     setPreviousPage={setPreviousPage}
+                    setCardParallax={setCardParallax}
                 />
             </Route>
         );

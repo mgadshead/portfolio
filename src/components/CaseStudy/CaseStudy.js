@@ -45,12 +45,6 @@ const CaseStudy = props => {
             }
         };
 
-        setTimeout(() => {
-            if (homeButton.current !== null) {
-                homeButton.current.classList.add('show-home-button');
-            }
-        }, props.transitionTime);
-
         document.addEventListener('scroll', scrollFunction);
 
         return () => {
@@ -59,6 +53,11 @@ const CaseStudy = props => {
     });
 
     useEffect(() => {
+        setTimeout(() => {
+            if (homeButton.current !== null) {
+                homeButton.current.classList.add('show-home-button');
+            }
+        }, props.transitionTime);
         props.startOpen(props.id);
         window.scrollTo(0, 0);
         setTimeout(() => {
@@ -116,6 +115,7 @@ const CaseStudy = props => {
 
     const previous = () => {
         if (props.caseStudies[props.id - 1]) {
+            props.setCardParallax(0);
             props.setPreviousPage(props.caseStudies[props.id].link);
             // Dammit another setTimeout
             setTimeout(() => {
@@ -126,6 +126,7 @@ const CaseStudy = props => {
 
     const next = () => {
         if (props.caseStudies[props.id + 1]) {
+            props.setCardParallax(0);
             props.setPreviousPage(props.caseStudies[props.id].link);
             // Dammit another setTimeout
             setTimeout(() => {
