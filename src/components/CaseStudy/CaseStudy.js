@@ -206,7 +206,9 @@ const CaseStudy = props => {
                             </span>
                         )}
                         {!props.caseStudies[props.id - 1] && (
-                            <span className='no-link'>Previous Spacer</span>
+                            <span className='no-link previous'>
+                                <ChevronIcon />
+                            </span>
                         )}
                         <span
                             id='home-link'
@@ -223,7 +225,9 @@ const CaseStudy = props => {
                             </span>
                         )}
                         {!props.caseStudies[props.id + 1] && (
-                            <span className='no-link'>Next Spacer</span>
+                            <span className='no-link next'>
+                                <ChevronIcon />
+                            </span>
                         )}
                     </div>
                 </div>
