@@ -125,6 +125,10 @@
             }
             @media all and (max-width: 728px) {
                 font-size: 12px;
+                svg {
+                    width: 12px;
+                    margin-right: 4px;
+                }
             }
             @include hover-supported() {
                 &:hover {
@@ -148,6 +152,10 @@
             }
             @media all and (max-width: 728px) {
                 font-size: 12px;
+                svg {
+                    width: 12px;
+                    margin-left: 4px;
+                }
             }
             @include hover-supported() {
                 &:hover {
