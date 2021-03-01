@@ -5,6 +5,7 @@ import HomeIcon from '../HomeIcon/HomeIcon';
 import ChevronIcon from '../ChevronIcon/ChevronIcon';
 import smoothscroll from 'smoothscroll-polyfill';
 import { useSwipeable } from 'react-swipeable';
+import LazyLoad from 'vanilla-lazyload';
 
 const CaseStudy = props => {
     const content = useRef(null);
@@ -53,6 +54,8 @@ const CaseStudy = props => {
     });
 
     useEffect(() => {
+        var lazyLoadInstance = new LazyLoad();
+
         setTimeout(() => {
             if (homeButton.current !== null) {
                 homeButton.current.classList.add('show-home-button');
@@ -143,7 +146,14 @@ const CaseStudy = props => {
     });
 
     const images = props.caseStudyPage.images.map((image, i) => {
-        return <img key={i} src={process.env.PUBLIC_URL + image} alt={props.caseStudyPage.title} />;
+        return (
+            <img
+                key={i}
+                class='lazy'
+                data-src={process.env.PUBLIC_URL + image}
+                alt={props.caseStudyPage.title}
+            />
+        );
     });
 
     return (
