@@ -4,6 +4,7 @@ import './CaseStudy.scss';
 import HomeIcon from '../HomeIcon/HomeIcon';
 import ChevronIcon from '../ChevronIcon/ChevronIcon';
 import smoothscroll from 'smoothscroll-polyfill';
+import { useSwipeable } from 'react-swipeable';
 
 const CaseStudy = props => {
     const content = useRef(null);
@@ -59,6 +60,7 @@ const CaseStudy = props => {
 
     useEffect(() => {
         props.startOpen(props.id);
+        window.scrollTo(0, 0);
         setTimeout(() => {
             if (scrollDown.current !== null) {
                 scrollDown.current.classList.add('show-scroll-down');
@@ -68,14 +70,13 @@ const CaseStudy = props => {
 
     const initCloseCaseStudy = () => {
         let body = document.querySelector('html');
-
+        props.setPreviousPage('/');
         if (homeButton.current === null) {
             closeCaseStudy();
         } else {
             if (body.scrollTop === 0) {
                 closeCaseStudy();
             } else {
-                props.setTransition(true);
                 setIsTop(false);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
@@ -83,6 +84,7 @@ const CaseStudy = props => {
     };
 
     const closeCaseStudy = () => {
+        props.setTransition(true);
         let currentCardContainer = document.querySelector('.WorkCard.active');
         // Since this now fires on click as well as on page change we have to check if it's already run once
         // I should probably do something nicer later
@@ -112,6 +114,31 @@ const CaseStudy = props => {
         window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
     };
 
+    const previous = () => {
+        if (props.caseStudies[props.id - 1]) {
+            props.setPreviousPage(props.caseStudies[props.id].link);
+            // Dammit another setTimeout
+            setTimeout(() => {
+                history.push(props.caseStudies[props.id - 1].link);
+            }, 16);
+        }
+    };
+
+    const next = () => {
+        if (props.caseStudies[props.id + 1]) {
+            props.setPreviousPage(props.caseStudies[props.id].link);
+            // Dammit another setTimeout
+            setTimeout(() => {
+                history.push(props.caseStudies[props.id + 1].link);
+            }, 16);
+        }
+    };
+
+    const handlers = useSwipeable({
+        onSwipedLeft: () => next(),
+        onSwipedRight: () => previous()
+    });
+
     const tags = props.caseStudyPage.tags.map((tag, i) => {
         return <li key={i}>{tag}</li>;
     });
@@ -121,7 +148,7 @@ const CaseStudy = props => {
     });
 
     return (
-        <div className='CaseStudy'>
+        <div className='CaseStudy' {...handlers}>
             <div
                 className='home-button'
                 id='home-button'
@@ -173,7 +200,16 @@ const CaseStudy = props => {
                         )}
                     </div>
                     {props.caseStudyPage.images && <div className='images'>{images}</div>}
-                    <div className='home-link'>
+                    <div className='bottom-links'>
+                        {props.caseStudies[props.id - 1] && (
+                            <span className='previous' onClick={() => previous()}>
+                                <ChevronIcon />
+                                Previous
+                            </span>
+                        )}
+                        {!props.caseStudies[props.id - 1] && (
+                            <span className='no-link'>Previous</span>
+                        )}
                         <span
                             id='home-link'
                             onClick={() => {
@@ -183,6 +219,13 @@ const CaseStudy = props => {
                         >
                             Home
                         </span>
+                        {props.caseStudies[props.id + 1] && (
+                            <span className='next' onClick={() => next()}>
+                                Next
+                                <ChevronIcon />
+                            </span>
+                        )}
+                        {!props.caseStudies[props.id + 1] && <span className='no-link'>Next</span>}
                     </div>
                 </div>
             </div>

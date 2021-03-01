@@ -90,15 +90,59 @@
             margin-bottom: 8px;
         }
     }
-    .home-link {
+    .bottom-links {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        align-items: center;
         text-decoration: none;
         font-weight: 700;
+        .no-link {
+            opacity: 0;
+        }
         #home-link {
             color: $blue;
             transition: $transition;
             cursor: pointer;
+            @include hover-supported() {
+                &:hover {
+                    color: rgba($blue, 0.4);
+                }
+            }
+        }
+        .previous {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: $blue;
+            cursor: pointer;
+            transition: $transition;
+            svg {
+                width: 16px;
+                transform: rotate(90deg);
+                margin-right: 8px;
+                position: relative;
+                top: -1px;
+            }
+            @include hover-supported() {
+                &:hover {
+                    color: rgba($blue, 0.4);
+                }
+            }
+        }
+        .next {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: $blue;
+            cursor: pointer;
+            transition: $transition;
+            svg {
+                width: 16px;
+                transform: rotate(-90deg);
+                margin-left: 8px;
+                position: relative;
+                top: -1px;
+            }
             @include hover-supported() {
                 &:hover {
                     color: rgba($blue, 0.4);

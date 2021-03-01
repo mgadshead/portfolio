@@ -25,6 +25,7 @@ const HorizontalScroller = props => {
                 transitionTime={props.transitionTime}
                 setStartOnCaseStudy={props.setStartOnCaseStudy}
                 openCaseStudy={props.openCaseStudy}
+                previousPage={props.previousPage}
             />
         );
     });

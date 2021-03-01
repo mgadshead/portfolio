@@ -33,6 +33,7 @@ const MainContent = props => {
                 cardParallax={props.cardParallax}
                 transitionTime={props.transitionTime}
                 setStartOnCaseStudy={props.setStartOnCaseStudy}
+                previousPage={props.previousPage}
             />
         </div>
     );

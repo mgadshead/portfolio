@@ -12,6 +12,7 @@ const Router = () => {
     const [zIndex, setZIndex] = useState(false);
     const [cardParallax, setCardParallax] = useState(null);
     const [startOnCaseStudy, setStartOnCaseStudy] = useState(true);
+    const [previousPage, setPreviousPage] = useState('/');
     const transitionTime = 240; // Change $transition in App.scss to match
 
     const startOpen = i => {
@@ -38,6 +39,8 @@ const Router = () => {
                     setTransition={setTransition}
                     setCardPosition={setCardPosition}
                     startOpen={startOpen}
+                    caseStudies={caseStudies}
+                    setPreviousPage={setPreviousPage}
                 />
             </Route>
         );
@@ -61,6 +64,7 @@ const Router = () => {
                 setCardParallax={setCardParallax}
                 transitionTime={transitionTime}
                 setStartOnCaseStudy={setStartOnCaseStudy}
+                previousPage={previousPage}
             ></MainContent>
             <Switch>{caseStudyPages}</Switch>
         </BrowserRouter>
