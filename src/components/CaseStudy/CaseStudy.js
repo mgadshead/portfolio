@@ -115,7 +115,6 @@ const CaseStudy = props => {
 
     const previous = () => {
         if (props.caseStudies[props.id - 1]) {
-            props.setCardParallax(0);
             props.setPreviousPage(props.caseStudies[props.id].link);
             // Dammit another setTimeout
             setTimeout(() => {
@@ -126,7 +125,6 @@ const CaseStudy = props => {
 
     const next = () => {
         if (props.caseStudies[props.id + 1]) {
-            props.setCardParallax(0);
             props.setPreviousPage(props.caseStudies[props.id].link);
             // Dammit another setTimeout
             setTimeout(() => {
@@ -205,11 +203,10 @@ const CaseStudy = props => {
                         {props.caseStudies[props.id - 1] && (
                             <span className='previous' onClick={() => previous()}>
                                 <ChevronIcon />
-                                Previous
                             </span>
                         )}
                         {!props.caseStudies[props.id - 1] && (
-                            <span className='no-link'>Previous</span>
+                            <span className='no-link'>Previous Spacer</span>
                         )}
                         <span
                             id='home-link'
@@ -222,11 +219,12 @@ const CaseStudy = props => {
                         </span>
                         {props.caseStudies[props.id + 1] && (
                             <span className='next' onClick={() => next()}>
-                                Next
                                 <ChevronIcon />
                             </span>
                         )}
-                        {!props.caseStudies[props.id + 1] && <span className='no-link'>Next</span>}
+                        {!props.caseStudies[props.id + 1] && (
+                            <span className='no-link'>Next Spacer</span>
+                        )}
                     </div>
                 </div>
             </div>

@@ -119,7 +119,6 @@
             svg {
                 width: 16px;
                 transform: rotate(90deg);
-                margin-right: 8px;
                 position: relative;
                 top: -1px;
             }
@@ -128,7 +127,6 @@
                 margin-top: 2px;
                 svg {
                     width: 12px;
-                    margin-right: 4px;
                 }
             }
             @include hover-supported() {
@@ -147,7 +145,6 @@
             svg {
                 width: 16px;
                 transform: rotate(-90deg);
-                margin-left: 8px;
                 position: relative;
                 top: -1px;
             }
@@ -156,7 +153,6 @@
                 margin-top: 2px;
                 svg {
                     width: 12px;
-                    margin-left: 4px;
                 }
             }
             @include hover-supported() {
@@ -222,11 +218,14 @@
         letter-spacing: 0.8px;
         svg {
             width: 24px;
-            height: 24px;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            bottom: calc(50% - 24px);
+            bottom: calc(50% - 32px);
+            @media all and (max-width: 728px) {
+                bottom: calc(50% - 16px);
+                width: 16px;
+            }
         }
         &.show-scroll-down {
             opacity: 1;
@@ -236,7 +235,7 @@
             }
         }
         @media all and (max-width: 728px) {
-            font-size: 16px;
+            font-size: 14px;
         }
         .scroll-button {
             padding: 8px 8px 32px 8px;

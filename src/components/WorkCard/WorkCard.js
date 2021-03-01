@@ -75,10 +75,7 @@ const WorkCard = props => {
                 <img
                     src={process.env.PUBLIC_URL + '/img/' + props.logo}
                     style={{
-                        transform:
-                            props.i === props.index
-                                ? 'translateY(' + props.cardParallax + 'px)'
-                                : '0'
+                        transform: 'translateY(' + props.cardParallax + 'px)'
                     }}
                 />
             </Link>
