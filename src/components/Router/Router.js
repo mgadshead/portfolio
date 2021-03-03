@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CaseStudy from '../CaseStudy/CaseStudy';
 import MainContent from '../MainContent/MainContent';
-import { caseStudies } from '../../data/data';
+// import { caseStudies } from '../../data/data';
+import wordpress from '../../api/wordpress';
 
 const Router = () => {
     const [index, setIndex] = useState(null);
@@ -14,6 +15,17 @@ const Router = () => {
     const [startOnCaseStudy, setStartOnCaseStudy] = useState(true);
     const [previousPage, setPreviousPage] = useState('/');
     const transitionTime = 240; // Change $transition in App.scss to match
+    const [caseStudies, setCaseStudies] = useState([]);
+
+    useEffect(() => {
+        const getCaseStudies = async () => {
+            const { data } = await wordpress.get('wp-json/acf/v3/posts');
+            setCaseStudies(data);
+            console.log(data[0]);
+        };
+
+        getCaseStudies();
+    }, []);
 
     const startOpen = i => {
         // THIS FUNCTION MUST BE AT ROOT/ROUTER. STOP TRYING TO MOVE IT!
@@ -27,7 +39,7 @@ const Router = () => {
 
     const caseStudyPages = caseStudies.map((caseStudyPage, i) => {
         return (
-            <Route path={caseStudyPage.link} key={i}>
+            <Route path={'/' + caseStudyPage.acf.link} key={i}>
                 <CaseStudy
                     caseStudyPage={caseStudyPage}
                     setIsActive={setIsActive}

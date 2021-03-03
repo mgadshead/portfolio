@@ -73,7 +73,7 @@ const WorkCard = props => {
                 }}
             >
                 <img
-                    src={process.env.PUBLIC_URL + '/img/' + props.logo}
+                    src={props.logo}
                     style={{
                         transform: 'translateY(' + props.cardParallax + 'px)'
                     }}

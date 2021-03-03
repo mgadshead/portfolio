@@ -117,21 +117,28 @@ const CaseStudy = props => {
     };
 
     const previous = () => {
-        if (props.caseStudies[props.id - 1]) {
-            props.setPreviousPage(props.caseStudies[props.id].link);
+        let index = props.caseStudies.findIndex(function (obj) {
+            return obj.id == props.caseStudyPage.id;
+        });
+        if (index - 1 > -1) {
+            // Resolves to false without the greater than statement
+            props.setPreviousPage(props.caseStudies[index].acf.link);
             // Dammit another setTimeout
             setTimeout(() => {
-                history.push(props.caseStudies[props.id - 1].link);
+                history.push(props.caseStudies[index - 1].acf.link);
             }, 16);
         }
     };
 
     const next = () => {
-        if (props.caseStudies[props.id + 1]) {
-            props.setPreviousPage(props.caseStudies[props.id].link);
+        let index = props.caseStudies.findIndex(function (obj) {
+            return obj.id == props.caseStudyPage.id;
+        });
+        if (props.caseStudies[index + 1]) {
+            props.setPreviousPage(props.caseStudies[index].acf.link);
             // Dammit another setTimeout
             setTimeout(() => {
-                history.push(props.caseStudies[props.id + 1].link);
+                history.push(props.caseStudies[index + 1].acf.link);
             }, 16);
         }
     };
@@ -141,17 +148,30 @@ const CaseStudy = props => {
         onSwipedRight: () => previous()
     });
 
-    const tags = props.caseStudyPage.tags.map((tag, i) => {
-        return <li key={i}>{tag}</li>;
+    const copy = {
+        __html: props.caseStudyPage.acf.content
+    };
+
+    const tagsArray = Object.values(props.caseStudyPage.acf.tags);
+
+    const tags = tagsArray.map((tag, i) => {
+        return <li key={i}>{Object.values(tag)}</li>;
     });
 
-    const images = props.caseStudyPage.images.map((image, i) => {
+    const images = props.caseStudyPage.acf.images.map((image, i) => {
         return (
             <img
                 key={i}
-                class='lazy'
-                data-src={process.env.PUBLIC_URL + image}
-                alt={props.caseStudyPage.title}
+                className='lazy'
+                data-srcset={
+                    image.image.sizes.mobile +
+                    ' 500w, ' +
+                    image.image.sizes.tablet +
+                    ' 800w, ' +
+                    image.image.sizes.desktop +
+                    ' 1200w'
+                }
+                alt={image.image.alt}
             />
         );
     });
@@ -171,7 +191,9 @@ const CaseStudy = props => {
             </div>
             <div
                 className='scroll-down'
-                style={{ color: props.caseStudyPage.scrollDownColor }}
+                style={{
+                    color: props.caseStudyPage.acf.scroll_down_color === 'Dark' ? '#333' : '#fff'
+                }}
                 ref={scrollDown}
                 role='button'
             >
@@ -194,21 +216,21 @@ const CaseStudy = props => {
                         />
                     )}
                     <div className='copy'>
-                        <h1>{props.caseStudyPage.title}</h1>
-                        <div dangerouslySetInnerHTML={props.caseStudyPage.copy}></div>
-                        {props.caseStudyPage.externalPrettyLink && (
-                            <a href={props.caseStudyPage.externalLink} target='_blank'>
-                                {props.caseStudyPage.externalPrettyLink}
+                        <h1>{props.caseStudyPage.acf.title}</h1>
+                        <div dangerouslySetInnerHTML={copy}></div>
+                        {props.caseStudyPage.acf.external_pretty_link && (
+                            <a href={props.caseStudyPage.acf.external_link} target='_blank'>
+                                {props.caseStudyPage.acf.external_pretty_link}
                             </a>
                         )}
-                        {props.caseStudyPage.tags.length !== 0 && (
+                        {tags.length !== 0 && (
                             <div className='tags'>
                                 <h2>Tags:</h2>
                                 <ul>{tags}</ul>
                             </div>
                         )}
                     </div>
-                    {props.caseStudyPage.images && <div className='images'>{images}</div>}
+                    {props.caseStudyPage.acf.images && <div className='images'>{images}</div>}
                     <div className='bottom-links'>
                         {props.caseStudies[props.id - 1] && (
                             <span className='previous' onClick={() => previous()}>

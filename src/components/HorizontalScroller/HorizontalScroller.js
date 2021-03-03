@@ -6,9 +6,9 @@ const HorizontalScroller = props => {
     const caseStudiesList = props.caseStudies.map((caseStudy, i) => {
         return (
             <WorkCard
-                backgroundColor={caseStudy.backgroundColor}
-                logo={caseStudy.logo}
-                link={caseStudy.link}
+                backgroundColor={caseStudy.acf.background_color}
+                logo={caseStudy.acf.logo}
+                link={caseStudy.acf.link}
                 cardPosition={props.cardPosition}
                 setCardPosition={props.setCardPosition}
                 isActive={props.isActive}
