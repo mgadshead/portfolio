@@ -21,7 +21,6 @@ const Router = () => {
         const getCaseStudies = async () => {
             const { data } = await wordpress.get('wp-json/acf/v3/posts');
             setCaseStudies(data);
-            console.log(data[0]);
         };
 
         getCaseStudies();
