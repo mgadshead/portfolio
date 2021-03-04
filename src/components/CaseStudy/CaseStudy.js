@@ -163,17 +163,11 @@ const CaseStudy = props => {
             <img
                 key={i}
                 className='lazy'
+                src={image.image.sizes.mobile}
                 data-srcset={
-                    image.image.sizes.mobile +
-                    ' 400w, ' +
-                    image.image.sizes.tablet +
-                    ' 800w, ' +
-                    image.image.sizes.desktop +
-                    ' 1200w'
+                    image.image.sizes.tablet + ' 800w, ' + image.image.sizes.desktop + ' 1200w'
                 }
                 alt={image.image.alt}
-                width={props.caseStudyPage.acf.width}
-                height={props.caseStudyPage.acf.height}
             />
         );
     });
@@ -214,17 +208,14 @@ const CaseStudy = props => {
                     {props.caseStudyPage.acf.mockup && (
                         <img
                             className='lazy'
+                            src={props.caseStudyPage.acf.mockup.sizes.mobile}
                             data-srcset={
-                                props.caseStudyPage.acf.mockup.sizes.mobile +
-                                ' 400w, ' +
                                 props.caseStudyPage.acf.mockup.sizes.tablet +
                                 ' 800w, ' +
                                 props.caseStudyPage.acf.mockup.sizes.desktop +
                                 ' 1200w'
                             }
                             alt={props.caseStudyPage.acf.alt}
-                            width={props.caseStudyPage.acf.width}
-                            height={props.caseStudyPage.acf.height}
                         />
                     )}
                     <div className='copy'>
