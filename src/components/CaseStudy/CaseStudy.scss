@@ -248,4 +248,11 @@
             }
         }
     }
+    .lazy {
+        opacity: 0;
+        transition: $transition;
+        &.loaded {
+            opacity: 1;
+        }
+    }
 }
