@@ -165,7 +165,7 @@ const CaseStudy = props => {
                 className='lazy'
                 data-srcset={
                     image.image.sizes.mobile +
-                    ' 500w, ' +
+                    ' 400w, ' +
                     image.image.sizes.tablet +
                     ' 800w, ' +
                     image.image.sizes.desktop +
@@ -209,10 +209,18 @@ const CaseStudy = props => {
             </div>
             <div className='content' ref={content}>
                 <div className='wrapper'>
-                    {props.caseStudyPage.mockup && (
+                    {props.caseStudyPage.acf.mockup && (
                         <img
-                            src={process.env.PUBLIC_URL + props.caseStudyPage.mockup}
-                            alt={props.caseStudyPage.title}
+                            className='lazy'
+                            data-srcset={
+                                props.caseStudyPage.acf.mockup.sizes.mobile +
+                                ' 400w, ' +
+                                props.caseStudyPage.acf.mockup.sizes.tablet +
+                                ' 800w, ' +
+                                props.caseStudyPage.acf.mockup.sizes.desktop +
+                                ' 1200w'
+                            }
+                            alt={props.caseStudyPage.acf.alt}
                         />
                     )}
                     <div className='copy'>
