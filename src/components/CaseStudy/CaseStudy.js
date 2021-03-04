@@ -172,6 +172,8 @@ const CaseStudy = props => {
                     ' 1200w'
                 }
                 alt={image.image.alt}
+                width={props.caseStudyPage.acf.width}
+                height={props.caseStudyPage.acf.height}
             />
         );
     });
@@ -221,6 +223,8 @@ const CaseStudy = props => {
                                 ' 1200w'
                             }
                             alt={props.caseStudyPage.acf.alt}
+                            width={props.caseStudyPage.acf.width}
+                            height={props.caseStudyPage.acf.height}
                         />
                     )}
                     <div className='copy'>
